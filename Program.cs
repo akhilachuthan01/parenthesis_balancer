@@ -7,18 +7,18 @@ public class Solution {
     static string balancedString(string s) {
 		int pos = 0;
 		char[] c_arr = s.ToCharArray();
-		Stack<char> sc = new Stack<char>();
+		Stack<char> st = new Stack<char>();
 		for(int i = 0; i< c_arr.Length; i++)
 		{
 			if(c_arr[i] == '(')
 			{
-				sc.Push('(');
+				st.Push('(');
 			}
 			else
 			{
-				if(sc.Count > 0)
+				if(st.Count > 0)
 				{
-					sc.Pop();
+					st.Pop();
 				}
 				else
 				{
@@ -36,11 +36,7 @@ public class Solution {
 			pos++;
 		}
 		
-		if(sc.Count > 0)
-		{
-			String closingStr = new String(')', sc.Count);
-			s = String.Concat(s, closingStr);
-		}
+		s = String.Concat(s, new String(')', st.Count));
 		
 		return s;
     }
